@@ -1,156 +1,128 @@
-# 📚 AI Book Explorer
+# AI Book Explorer
 
-A modern web application that combines AI-powered book recommendations with a user-friendly interface for exploring and managing your book collection.
+A modern web application for exploring and discovering books using AI-powered features. Built with Next.js, Prisma, and PostgreSQL.
 
-## ✨ Features
+## Features
 
-- 🤖 **AI-Powered Chat Interface**
+- AI-powered book recommendations
+- Book search and filtering
+- User authentication
+- Book ratings and reviews
+- Modern, responsive UI with Tailwind CSS
 
-  - Get personalized book recommendations
-  - Request book summaries
-  - Search by genre, author, or specific criteria
-  - Natural language interaction with the AI agent
+## Tech Stack
 
-- 📖 **Book Management**
+- **Frontend**: Next.js 15, React 19, Tailwind CSS
+- **Backend**: Next.js API Routes
+- **Database**: PostgreSQL with Prisma ORM
+- **State Management**: Redux Toolkit
+- **AI Integration**: Groq SDK
+- **Styling**: Tailwind CSS
+- **Type Safety**: TypeScript
 
-  - View detailed book information
-  - Add new books through an intuitive form
-  - Persistent storage in database
-  - Responsive design for all devices
-
-- 🎯 **Smart Search**
-  - Filter books by various criteria
-  - Get AI-powered recommendations
-  - Quick access to book details
-
-## 🛠️ Tech Stack
-
-- **Frontend**
-
-  - Next.js 15.3.2
-  - React 19.0.0
-  - Redux Toolkit for state management
-  - Tailwind CSS for styling
-
-- **Backend**
-
-  - Next.js API Routes
-  - PostgreSQL Database
-  - Prisma ORM
-
-- **AI Integration**
-  - LangGraph + CopilotKit
-  - Groq LLM API
-
-## 🚀 Getting Started
-
-### Prerequisites
+## Prerequisites
 
 - Node.js (v18 or higher)
-- PostgreSQL
-- Groq API key
+- PostgreSQL database
+- npm or yarn package manager
 
-### Installation
+## Getting Started
 
-1. Clone the repository:
-
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/gabriel-free/ai-book-exlporer.git
-   cd ai-book-explorer
+   git clone https://github.com/gabriel-free/ai-book.git
+   cd ai-book
    ```
 
-2. Install dependencies:
-
+2. **Install dependencies**
    ```bash
    npm install
+   # or
+   yarn install
    ```
 
-3. Set up environment variables:
+3. **Set up environment variables**
    Create a `.env` file in the root directory with the following variables:
-
-   ```env
+   ```
    DATABASE_URL="postgresql://username:password@localhost:5432/ai_book_explorer"
    GROQ_API_KEY="your-groq-api-key"
    ```
 
-4. Initialize the database:
-
+4. **Set up the database**
    ```bash
-   npx prisma migrate dev
-   npx prisma db seed
+   npx prisma generate
+   npx prisma db push
    ```
 
-5. Start the development server:
+5. **Run the development server**
    ```bash
    npm run dev
+   # or
+   yarn dev
    ```
 
-The application will be available at `http://localhost:3000`
+6. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## 📦 Database Setup
-
-1. Create a PostgreSQL database
-2. Update the DATABASE_URL in your .env file
-3. Run migrations:
-   ```bash
-   npx prisma migrate dev
-   ```
-4. Seed the database with initial data:
-   ```bash
-   npx prisma db seed
-   ```
-
-## 🤖 AI Integration Setup
-
-1. Visit [Groq Console](https://console.groq.com)
-2. Create a free account
-3. Generate an API key
-4. Add the API key to your .env file
-
-## 🎨 UI/UX Features
-
-- Responsive design for all screen sizes
-- Modern and clean interface
-- Intuitive navigation
-- Real-time updates
-- Smooth animations
-
-## 🔧 Development
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run test` - Run tests
-
-### Project Structure
+## Project Structure
 
 ```
 ai-book-explorer/
-├── app/
-│   ├── components/     # React components
-│   ├── store/         # Redux store and slices
-│   ├── actions/       # API actions
-│   └── types/         # TypeScript types
-├── prisma/            # Database schema and migrations
-├── public/            # Static assets
-└── tests/             # Test files
+├── app/                    # Next.js app directory
+│   ├── api/               # API routes
+│   ├── components/        # React components
+│   ├── store/            # Redux store configuration
+│   ├── types/            # TypeScript type definitions
+│   ├── actions/          # Server actions
+│   └── page.tsx          # Main page component
+├── prisma/                # Prisma configuration
+│   └── schema.prisma     # Database schema
+├── public/               # Static assets
+├── lib/                  # Utility functions
+└── package.json         # Project dependencies and scripts
 ```
 
-## 📝 API Documentation
+## Database Schema
 
-### Book Endpoints
+The application uses two main models:
 
-- `GET /api/books` - Get all books
-- `POST /api/books` - Add a new book
-- `GET /api/books/:id` - Get book details
+### User
+- id: Int (Primary Key)
+- email: String (Unique)
+- name: String
+- createdAt: DateTime
+- updatedAt: DateTime
 
-### AI Chat Endpoints
+### Book
+- id: String (UUID)
+- name: String
+- author: String
+- rating: Float
+- reviews: Int
+- price: Int
+- year: Int
+- genre: String
+- createdAt: DateTime
+- updatedAt: DateTime
 
-- `POST /api/chat` - Send message to AI agent
-- `GET /api/recommendations` - Get book recommendations
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🤝 Contributing
 
@@ -164,9 +136,6 @@ ai-book-explorer/
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👥 Authors
-
-- Your Name - Initial work
 
 ## 🙏 Acknowledgments
 
@@ -176,4 +145,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-For support, email [your-email] or open an issue in the repository.
+For support, email gabriel.lima971025@gmail.com or open an issue in the repository.
